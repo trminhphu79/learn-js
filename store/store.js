@@ -12,6 +12,7 @@ function createStore(reducer, initialState, enhancer) {
 
     const dispatch = (action) => {
         state = reducer(state, action);
+        // call all listeners to re-render component
         listeners.forEach(listener => listener());
     };
 
