@@ -1,12 +1,4 @@
 
-function combineReducers(reducers) {
-    return (state = {}, action) => {
-        return Object.keys(reducers).reduce((nextState, key) => {
-            nextState[key] = reducers[key](state[key], action);
-            return nextState;
-        }, {});
-    };
-}
 
 function counterReducer(state = { count: 0 }, action) {
     switch (action.type) {
@@ -28,4 +20,4 @@ function messagesReducer(state = { messages: [] }, action) {
     }
 }
 
-export { combineReducers, messagesReducer, counterReducer }
+export { messagesReducer, counterReducer }
