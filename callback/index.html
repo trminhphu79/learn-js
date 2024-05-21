@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <h1>Hello world</h1>
+    <script>
+
+        async function f() {
+            console.log('f execute');
+
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(() => resolve("done!"), 1000)
+            });
+
+            let result = await promise;
+            promise.then(() => console.log("promise is done!"));
+        }
+
+        f();
+
+        function abc() {
+            console.log("12312")
+        }
+
+        abc();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

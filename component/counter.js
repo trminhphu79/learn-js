@@ -37,6 +37,7 @@ function couterComponent() {
 
 
     const selectedState = state => state?.counter?.count;
+    
     store.subscribe(render, selectedState);
 
     // called when component is unmounted / destroyed

@@ -1,14 +1,36 @@
-import { messagesReducer, counterReducer } from './reducer.js';
-import { createStore, combineReducers } from '../lib/xStore/index.js';
+import { messagesReducer, counterReducer } from "./reducer.js";
+import { createStore, combineReducers } from "../lib/xState/index.js";
+import { initCountState, initMessages } from "./state.js";
 
 const rootReducer = combineReducers({
-    counter: counterReducer,
-    messages: messagesReducer
+  counter: counterReducer,
+  messages: messagesReducer,
 });
 
-const initCountState = { count: 0 };
-const initMessages = { messages: ["Hello bro", "Tmp"] };
-
-const store = createStore(rootReducer, { counter: initCountState, messages: initMessages });
+const store = createStore(rootReducer, {
+  counter: initCountState,
+  messages: initMessages,
+});
 
 export { store };
+
+function createCartService() {
+  let cart = [];
+
+  function addToCart(item) {
+    cart.push(item);
+  }
+
+  function getCart() {
+    return cart;
+  }
+
+  return {
+    addToCart,
+    getCart
+  };
+}
+
+const cartService = createCartService();
+cartService.addToCart('Apple');
+console.log(cartService.getCart()); // ['Apple']
